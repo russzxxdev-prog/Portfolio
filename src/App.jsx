@@ -211,7 +211,14 @@ const experience = [
   },
 ];
 
-const baseImagePath = (file) => `/images/${encodeURIComponent(file)}`;
+const baseImagePath = (file) => (file ? `/images/${encodeURIComponent(file)}` : '/images/download.jpg');
+
+const handleImageError = (event) => {
+  if (event.currentTarget.dataset.fallbackApplied === 'true') return;
+
+  event.currentTarget.dataset.fallbackApplied = 'true';
+  event.currentTarget.src = '/images/download.jpg';
+};
 
 function App() {
   const [theme, setTheme] = useState(() => (typeof window !== 'undefined' ? localStorage.getItem('portfolio-theme') || 'dark' : 'dark'));
@@ -477,7 +484,7 @@ function App() {
             {projects.map((project) => (
               <article key={project.name} className="project-card" onClick={() => setSelectedProject(project)}>
                 <div className="project-image-wrap">
-                  <img src={baseImagePath(project.image)} alt={project.name} />
+                  <img src={baseImagePath(project.image)} alt={project.name} onError={handleImageError} />
                 </div>
                 <div className="project-body">
                   <div className="project-meta">
@@ -611,7 +618,7 @@ function App() {
               ✕
             </button>
             <div className="modal-image-wrap">
-              <img src={baseImagePath(selectedProject.image)} alt={selectedProject.name} />
+              <img src={baseImagePath(selectedProject.image)} alt={selectedProject.name} onError={handleImageError} />
             </div>
             <div className="modal-content">
               <span className="type-pill">{selectedProject.type}</span>
