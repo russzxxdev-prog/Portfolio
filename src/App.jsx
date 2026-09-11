@@ -4,9 +4,9 @@ import emailjs from '@emailjs/browser';
 const navItems = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#projects' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Team', href: '#experience' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -234,6 +234,14 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap';
+    document.head.appendChild(link);
+    return () => { if (document.head.contains(link)) document.head.removeChild(link); };
+  }, []);
+
+  useEffect(() => {
     const revealItems = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -314,7 +322,7 @@ function App() {
     <div className="page-shell" id="top">
       <header className="topbar">
         <div className="brand-wrap">
-          <span className="brand-name">R.M</span>
+          <span className="brand-name">Russel.dev</span>
         </div>
 
         <nav className="main-nav" aria-label="Main navigation">
@@ -363,7 +371,7 @@ function App() {
       <main>
         <section className="hero section reveal">
           <div className="hero-copy">
-            <p className="eyebrow">Software Developer • IoT Innovator • Future Systems Builder</p>
+            <p className="eyebrow">Software Developer · IoT Innovator · Systems Builder</p>
             <h1>Building digital products and intelligent systems that move ideas forward.</h1>
             <p className="lead">
               BS Computer Science student with a strong foundation in full-stack development,
@@ -439,7 +447,7 @@ function App() {
                 <span>Tech categories</span>
               </div>
               <div>
-                <strong>2020–2024</strong>
+                <strong>2022–2026</strong>
                 <span>Computer Science journey</span>
               </div>
               <div>
@@ -503,10 +511,10 @@ function App() {
           </div>
         </section>
 
-        <section className="section awards-section reveal">
+        <section className="awards-section reveal">
           <div className="section-heading compact">
             <p className="eyebrow">Recognition</p>
-            <h2>Awards & achievements</h2>
+            <h2>Awards &amp; achievements</h2>
           </div>
 
           <div className="award-list">
@@ -553,15 +561,15 @@ function App() {
               </p>
 
               <div className="contact-links">
-                <a href="mailto:russelmonroy2@gmail.com">📧 russelmonroy2@gmail.com</a>
+                <a href="mailto:russelmonroy2@gmail.com">russelmonroy2@gmail.com</a>
                 <a href="https://www.instagram.com/its_russzxx" target="_blank" rel="noreferrer">
-                  📸 Instagram @its_russzxx
+                  @its_russzxx on Instagram
                 </a>
                 <a href="https://www.facebook.com/Russzxx.05" target="_blank" rel="noreferrer">
-                  💬 Facebook Russzxx.05
+                  Russzxx.05 on Facebook
                 </a>
                 <a href="https://github.com/russzxxdev-prog" target="_blank" rel="noreferrer">
-                  💻 GitHub github.com/russzxxdev-prog
+                  github.com/russzxxdev-prog
                 </a>
               </div>
             </div>
@@ -607,7 +615,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <span>© 2025 Russel A. Monroy</span>
+        <span>© 2026 Russel A. Monroy — All rights reserved</span>
         <span>Masbate, Philippines</span>
       </footer>
 
